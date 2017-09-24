@@ -4,12 +4,29 @@
     "description": "Manage Azure Virtual Machine in VS Code",
     "version": "0.0.1",
     "publisher": "formulahendry",
+    "icon": "logo.png",
     "engines": {
         "vscode": "^1.16.0"
     },
     "categories": [
-        "Other"
+        "Azure"
     ],
+    "keywords": [
+        "Azure",
+        "VM",
+        "Virtual Machine",
+        "Explorer",
+        "Compute"
+    ],
+    "bugs": {
+        "url": "https://github.com/formulahendry/vscode-azure-virtual-machine-explorer/issues",
+        "email": "formulahendry@gmail.com"
+    },
+    "homepage": "https://github.com/formulahendry/vscode-azure-virtual-machine-explorer/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/formulahendry/vscode-azure-virtual-machine-explorer.git"
+    },
     "activationEvents": [
         "onView:azureVirtualMachine"
     ],

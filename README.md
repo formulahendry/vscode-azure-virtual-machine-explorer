@@ -1,65 +1,42 @@
-# azure-virtual-machine-explorer README
+# Azure Virtual Machine Explorer
 
-This is the README for your extension "azure-virtual-machine-explorer". After writing up a brief description, we recommend including the following sections.
+Azure Virtual Machine Explorer for VS Code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+* List Subscriptions
+* List Virtual Machines
+* Start Virtual Machine
+* Stop Virtual Machine
 
-For example if there is an image subfolder under your extension project workspace:
+## Prerequisites
 
-\!\[feature X\]\(images/feature-x.png\)
+* An Azure Subscription. If you don't have, click [here](https://azure.microsoft.com/en-us/free/) to get a free one.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+1. Click to sign in 
+    
+  ![sign-in](images/sign-in.png)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+2. After sign-in, click the `+` button to select Azure Subscription
+3. Wait for a moment, the Virtual Machine list will be shown
 
-## Extension Settings
+  ![explorer](images/explorer.png)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Telemetry data
 
-For example:
+By default, anonymous telemetry data collection is turned on to understand user behavior to improve this extension. To disable it, update the settings.json as below:
+```json
+{
+    "azure-virtual-machine-explorer.enableTelemetry": false
+}
+```
 
-This extension contributes the following settings:
+## Change Log
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+See Change Log [here](CHANGELOG.md)
 
-## Known Issues
+## Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Currently, the extension is in the very initial phase. If you find any bug or have any suggestion/feature request, please submit the [issues](https://github.com/formulahendry/vscode-azure-virtual-machine-explorer/issues) to the GitHub Repo.
