@@ -1,0 +1,119 @@
+{
+    "name": "azure-virtual-machine-explorer",
+    "displayName": "Azure Virtual Machine Explorer",
+    "description": "Manage Azure Virtual Machine in VS Code",
+    "version": "0.0.1",
+    "publisher": "formulahendry",
+    "engines": {
+        "vscode": "^1.16.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onView:azureVirtualMachine"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "views": {
+            "explorer": [{
+                "id": "azureVirtualMachine",
+                "name": "Azure Virtual Machine"
+            }]
+        },
+        "commands": [{
+                "command": "azure-virtual-machine-explorer.refresh",
+                "title": "Refresh",
+                "category": "Azure Virtual Machine",
+                "icon": {
+                    "light": "resources/light/refresh.svg",
+                    "dark": "resources/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "azure-virtual-machine-explorer.selectSubscriptions",
+                "title": "Select Subscriptions",
+                "category": "Azure Virtual Machine",
+                "icon": {
+                    "light": "resources/light/selectSubscriptions.svg",
+                    "dark": "resources/dark/selectSubscriptions.svg"
+                }
+            },
+            {
+                "command": "azure-virtual-machine-explorer.start",
+                "title": "Start",
+                "category": "Azure Virtual Machine"
+            },
+            {
+                "command": "azure-virtual-machine-explorer.powerOff",
+                "title": "Power Off",
+                "category": "Azure Virtual Machine"
+            }
+        ],
+        "menus": {
+            "view/title": [{
+                    "command": "azure-virtual-machine-explorer.refresh",
+                    "when": "view == azureVirtualMachine",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "azure-virtual-machine-explorer.selectSubscriptions",
+                    "when": "view == azureVirtualMachine",
+                    "group": "navigation@2"
+                }
+            ],
+            "view/item/context": [{
+                    "command": "azure-virtual-machine-explorer.refresh",
+                    "when": "view == azureVirtualMachine && viewItem == subscription",
+                    "group": "azure-virtual-machine@1"
+                },
+                {
+                    "command": "azure-virtual-machine-explorer.start",
+                    "when": "view == azureVirtualMachine && viewItem == virtualMachine",
+                    "group": "azure-virtual-machine@1"
+                },
+                {
+                    "command": "azure-virtual-machine-explorer.powerOff",
+                    "when": "view == azureVirtualMachine && viewItem == virtualMachine",
+                    "group": "azure-virtual-machine@2"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Azure Virtual Machine Explorer",
+            "properties": {
+                "azure-virtual-machine-explorer.enableTelemetry": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to enable anonymous usage collection."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "tslint": "tslint -t verbose src/**/*.ts",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5",
+        "mocha": "^3.5.0",
+        "tslint": "^5.7.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "applicationinsights": "^0.21.0",
+        "azure-arm-compute": "^3.0.0-preview",
+        "azure-arm-resource": "^2.0.0-preview",
+        "ms-rest-azure": "^2.3.1"
+    },
+    "extensionDependencies": [
+        "ms-vscode.azure-account"
+    ]
+}
