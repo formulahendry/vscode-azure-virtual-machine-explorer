@@ -53,11 +53,29 @@ export class VirtualMachineNode implements INode {
 
     public powerOff(virtualMachineTreeDataProvider: VirtualMachineTreeDataProvider): void {
         vscode.window.withProgress({
-            title: `Stopping VM [${this.virtualMachine.name}]`,
+            title: `Powering off VM [${this.virtualMachine.name}]`,
             location: vscode.ProgressLocation.Window,
         }, async (progress) => {
             await new Promise((resolve, reject) => {
                 this.virtualMachines.powerOff(this.resourceGroupName, this.virtualMachine.name).then((response) => {
+                    if (response.error) {
+                        reject(response.error.message);
+                    } else {
+                        virtualMachineTreeDataProvider.refresh(this.subscriptionNode);
+                        resolve();
+                    }
+                });
+            });
+        });
+    }
+
+    public deallocate(virtualMachineTreeDataProvider: VirtualMachineTreeDataProvider): void {
+        vscode.window.withProgress({
+            title: `Deallocating VM [${this.virtualMachine.name}]`,
+            location: vscode.ProgressLocation.Window,
+        }, async (progress) => {
+            await new Promise((resolve, reject) => {
+                this.virtualMachines.deallocate(this.resourceGroupName, this.virtualMachine.name).then((response) => {
                     if (response.error) {
                         reject(response.error.message);
                     } else {

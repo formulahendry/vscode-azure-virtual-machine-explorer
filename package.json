@@ -2,7 +2,7 @@
     "name": "azure-virtual-machine-explorer",
     "displayName": "Azure Virtual Machine Explorer",
     "description": "Manage Azure Virtual Machine in VS Code",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "engines": {
@@ -63,7 +63,12 @@
             },
             {
                 "command": "azure-virtual-machine-explorer.powerOff",
-                "title": "Power Off",
+                "title": "Power Off (Stop)",
+                "category": "Azure Virtual Machine"
+            },
+            {
+                "command": "azure-virtual-machine-explorer.deallocate",
+                "title": "Deallocate (Shut down)",
                 "category": "Azure Virtual Machine"
             }
         ],
@@ -93,6 +98,11 @@
                     "command": "azure-virtual-machine-explorer.powerOff",
                     "when": "view == azureVirtualMachine && viewItem == virtualMachine",
                     "group": "azure-virtual-machine@2"
+                },
+                {
+                    "command": "azure-virtual-machine-explorer.deallocate",
+                    "when": "view == azureVirtualMachine && viewItem == virtualMachine",
+                    "group": "azure-virtual-machine@3"
                 }
             ]
         },

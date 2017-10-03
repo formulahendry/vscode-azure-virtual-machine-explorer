@@ -31,6 +31,11 @@ export function activate(context: vscode.ExtensionContext) {
         AppInsightsClient.sendEvent("powerOff");
         virtualMachineNode.powerOff(virtualMachineTreeDataProvider);
     }));
+
+    context.subscriptions.push(vscode.commands.registerCommand("azure-virtual-machine-explorer.deallocate", (virtualMachineNode: VirtualMachineNode) => {
+        AppInsightsClient.sendEvent("deallocate");
+        virtualMachineNode.deallocate(virtualMachineTreeDataProvider);
+    }));
 }
 
 export function deactivate() {
